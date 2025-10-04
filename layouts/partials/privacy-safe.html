@@ -1,0 +1,11 @@
+{{/* Privacy-safe tracking and analytics partial - currently empty for privacy compliance */}}
+
+{{/* This partial is intentionally left empty to ensure no tracking scripts are injected */}}
+{{/* Any future analytics needs should use privacy-compliant alternatives */}}
+
+{{/* Include privacy verification script if needed */}}
+{{ $privacyScript := resources.Get "js/privacy-verification.js" }}
+{{ if $privacyScript }}
+  {{ $privacyScript := $privacyScript | resources.Minify }}
+  <script src="{{ $privacyScript.RelPermalink }}"></script>
+{{ end }}

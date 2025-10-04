@@ -16,8 +16,44 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  privacy-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.150.1'
+          extended: true
+
+      - name: Build site
+        run: hugo --minify --baseURL "https://ambiyansyah-risyal.github.io/"
+
+      - name: Privacy compliance check
+        run: |
+          # Check for tracking scripts in built site
+          if grep -r -i -E "(google-analytics|google\\.com/analytics|facebook\\.com/tr|gtm\\.js|gtag|hotjar|matomo|piwik|hubspot|twitter\\.com/i/oct.js)" public/; then
+            echo "ERROR: Tracking scripts found in built site!"
+            exit 1
+          else
+            echo "No tracking scripts detected in built site."
+          fi
+          
+          # Verify Content Security Policy presence
+          if ! find public/ -name "*.html" -exec grep -l "Content-Security-Policy" {} \; | head -n 1; then
+            echo "WARNING: No Content Security Policy found in HTML files."
+          else
+            echo "Content Security Policy detected in built site."
+          fi
+
   build:
     runs-on: ubuntu-latest
+    needs: privacy-check
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,0 +1,58 @@
+# Privacy Verification Contract
+
+## Overview
+This contract defines how the privacy-safe website implementation will be verified to ensure no tracking mechanisms are present.
+
+## Verification Endpoints
+
+### GET /verify-privacy-compliance
+Verify that the website has no tracking mechanisms
+
+#### Request
+- No request body required
+- No special headers needed
+
+#### Response
+```json
+{
+  "verificationDate": "2025-10-04T12:00:00Z",
+  "status": "PASS|FAIL",
+  "trackingScriptsFound": [
+    {
+      "type": "google-analytics|facebook-pixel|custom-tracking",
+      "location": "head|body|external-resource",
+      "source": "script-url-or-location"
+    }
+  ],
+  "details": {
+    "cookiesCheck": "PASS|FAIL",
+    "thirdPartyScripts": "PASS|FAIL",
+    "fingerprintingChecks": "PASS|FAIL",
+    "analyticsCheck": "PASS|FAIL"
+  }
+}
+```
+
+### POST /scan-for-tracking
+Initiate a scan for tracking mechanisms on the website
+
+#### Request
+```json
+{
+  "scanType": "comprehensive|quick|cookie-focused|script-focused",
+  "targetUrl": "https://ambiyansyah-risyal.github.io"
+}
+```
+
+#### Response
+```json
+{
+  "scanId": "uuid",
+  "status": "in-progress|completed|failed",
+  "resultsUrl": "/verify-privacy-compliance/{scanId}"
+}
+```
+
+## Error Responses
+- 500: Internal server error during verification process
+- 400: Invalid request parameters

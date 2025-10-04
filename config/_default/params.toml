@@ -3,4 +3,14 @@
 description = "Personal website of Risyal Ambiyansyah - Portfolio and Blog"
 # Enable WCAG AA compliance features
 # Configure social media links
-# Set up analytics (if needed, though we're privacy-focused)
+
+# Privacy and security settings
+[params.privacy]
+  # Content Security Policy settings
+  [params.privacy.csp]
+    enabled = true
+    policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self'; frame-src 'self';"
+
+# No analytics for privacy compliance
+[params.analytics]
+  enabled = false

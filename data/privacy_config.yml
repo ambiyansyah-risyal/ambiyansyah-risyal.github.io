@@ -1,0 +1,9 @@
+# Privacy Configuration
+# Defines the privacy settings for the website
+
+trackingAllowed: false
+allowedCookies:
+  - "hugo_"  # Hugo-specific cookies if any
+  - "session"  # Essential session cookies (if needed)
+thirdPartyContentPolicy: "privacy-safe-alternatives-only"
+analyticsProvider: "none"
