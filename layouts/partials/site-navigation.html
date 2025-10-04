@@ -1,0 +1,69 @@
+<nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-white white-90 dib no-underline">
+      {{ with .Site.Params.site_logo }}
+        <img src="{{ urls.RelURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
+      {{ else }}
+        {{ .Site.Title }}
+      {{ end }}
+    </a>
+    <div class="flex-l items-center">
+      {{ partials.Include "i18nlist.html" . }}
+      {{ if .Site.Menus.main }}
+        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+          {{ range .Site.Menus.main }}
+          <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+            <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+              {{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      
+      <!-- Readability Controls -->
+      <div class="readability-controls-header dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr3" "pl3" }}">
+        <button id="readability-toggle" class="f6 f5-ns fw4 dib white-90 hover-white no-underline" aria-label="Adjust readability settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z"/>
+            <path d="M9.948 11.07H7.052L6.5 14.5h3.096l-.548-3.43zm-5.915-1.184A3.5 3.5 0 1 0 5.5 13.5H8a3.5 3.5 0 1 0 3.467-3.614 5.5 5.5 0 1 1-8.934 0z"/>
+          </svg>
+        </button>
+      </div>
+      
+      {{ partials.IncludeCached "social/follow.html" . }}
+    </div>
+  </div>
+  
+  <!-- Readability Controls Dropdown -->
+  <div id="readability-controls-dropdown" class="dn absolute mt2 pa3 bg-white shadow-4 br2" style="right: 1rem; z-index: 1000;">
+    {{ partials.Include "readability-controls.html" . }}
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('readability-toggle');
+  const dropdown = document.getElementById('readability-controls-dropdown');
+  
+  if (toggleBtn && dropdown) {
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (dropdown.classList.contains('dn')) {
+        dropdown.classList.remove('dn');
+        // Add click-outside listener to close dropdown
+        document.addEventListener('click', closeDropdownOnClickOutside);
+      } else {
+        dropdown.classList.add('dn');
+      }
+    });
+  }
+  
+  function closeDropdownOnClickOutside(e) {
+    if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
+      dropdown.classList.add('dn');
+      document.removeEventListener('click', closeDropdownOnClickOutside);
+    }
+  }
+});
+</script>

@@ -1,0 +1,68 @@
+{{/* Readability Settings API Endpoints Template */}}
+{{/* This template is used to handle the API endpoints for readability settings */}}
+
+{{ $endpoint := .Get "endpoint" | default "none" }}
+
+{{ if eq $endpoint "get" }}
+  {{/* GET /api/readability-settings endpoint */}}
+  {{ $settings := dict }}
+  {{ if isset $.Site.Data "readability" }}
+    {{ $settings = $.Site.Data.readability }}
+  {{ else }}
+    {{/* Default settings */}}
+    {{ $settings = dict 
+      "fontSize" "medium"
+      "highContrast" false
+      "readingWidth" "medium"
+      "lineSpacing" "normal"
+    }}
+  {{ end }}
+  
+  {{/* Output as JSON */}}
+  {{ $settings | jsonify }}
+{{ else if eq $endpoint "put" }}
+  {{/* PUT /api/readability-settings endpoint */}}
+  {{/* In a static site context, we'll handle this with JavaScript */}}
+  {{/* This template provides the necessary data structure for JS to work with */}}
+  {{ $settings := .Get "settings" | default (dict 
+    "fontSize" "medium"
+    "highContrast" false
+    "readingWidth" "medium"
+    "lineSpacing" "normal"
+  )}}
+  
+  {{/* Update site data if possible */}}
+  {{ .Scratch.Set "readabilitySettings" $settings }}
+  
+  {{/* Output success response */}}
+  {{ dict "status" "success" "message" "Settings updated successfully" | jsonify }}
+{{ else }}
+  {{/* Default: output settings form */}}
+  <div id="readability-settings" class="readability-controls">
+    <label for="font-size-control">Font Size:</label>
+    <select id="font-size-control" class="form-control">
+      <option value="small">Small</option>
+      <option value="medium" selected>Medium</option>
+      <option value="large">Large</option>
+    </select>
+
+    <label for="high-contrast-control">High Contrast:</label>
+    <input type="checkbox" id="high-contrast-control" class="form-check-input">
+    
+    <label for="reading-width-control">Content Width:</label>
+    <select id="reading-width-control" class="form-control">
+      <option value="narrow">Narrow</option>
+      <option value="medium" selected>Medium</option>
+      <option value="wide">Wide</option>
+    </select>
+    
+    <label for="line-spacing-control">Line Spacing:</label>
+    <select id="line-spacing-control" class="form-control">
+      <option value="compact">Compact</option>
+      <option value="normal" selected>Normal</option>
+      <option value="spacious">Spacious</option>
+    </select>
+    
+    <button id="save-readability-settings" class="btn btn-primary">Apply Settings</button>
+  </div>
+{{ end }}

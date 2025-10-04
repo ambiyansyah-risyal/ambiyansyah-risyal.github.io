@@ -41,49 +41,49 @@
 - Paths shown below assume Hugo static site - adjust based on plan.md structure
 
 ## Phase 3.1: Setup
-- [ ] T001 Update hugo.toml with readability configuration settings
-- [ ] T002 Set up CSS architecture following Bootstrap framework
-- [ ] T003 [P] Create assets/scss/readability/ directory structure
+- [x] T001 Update hugo.toml with readability configuration settings
+- [x] T002 Set up CSS architecture following Bootstrap framework
+- [x] T003 [P] Create assets/scss/readability/ directory structure
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
-- [ ] T004 [P] Contract test for GET /api/readability-settings in tests/contract/test_readability_get.js
-- [ ] T005 [P] Contract test for PUT /api/readability-settings in tests/contract/test_readability_put.js
-- [ ] T006 [P] Integration test for accessibility compliance in tests/integration/test_accessibility.js
-- [ ] T007 [P] Integration test for responsive text sizing in tests/integration/test_responsive_typography.js
+- [x] T004 [P] Contract test for GET /api/readability-settings in tests/contract/test_readability_get.js
+- [x] T005 [P] Contract test for PUT /api/readability-settings in tests/contract/test_readability_put.js
+- [x] T006 [P] Integration test for accessibility compliance in tests/integration/test_accessibility.js
+- [x] T007 [P] Integration test for responsive text sizing in tests/integration/test_responsive_typography.js
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T008 [P] Create content item model in assets/js/models/ContentItem.js
-- [ ] T009 [P] Create layout component model in assets/js/models/LayoutComponent.js
-- [ ] T010 [P] Create user preference model in assets/js/models/UserPreference.js
-- [ ] T011 Create base readability CSS in assets/scss/readability/_base.scss
-- [ ] T012 Create typography CSS in assets/scss/readability/_typography.scss
-- [ ] T013 Create accessibility CSS in assets/scss/readability/_accessibility.scss
-- [ ] T014 Create responsive design CSS in assets/scss/readability/_responsive.scss
-- [ ] T015 Create readability settings API endpoints in layouts/partials/readability-settings.html
-- [ ] T016 Create readability controls component in layouts/partials/readability-controls.html
-- [ ] T017 Add readability CSS to main SCSS bundle in assets/scss/main.scss
-- [ ] T018 Add JavaScript functionality for readability settings in assets/js/readability.js
-- [ ] T019 Add WCAG 2.1 AA compliance features to layouts/_default/baseof.html
+- [x] T008 [P] Create content item model in assets/js/models/ContentItem.js
+- [x] T009 [P] Create layout component model in assets/js/models/LayoutComponent.js
+- [x] T010 [P] Create user preference model in assets/js/models/UserPreference.js
+- [x] T011 Create base readability CSS in assets/scss/readability/_base.scss
+- [x] T012 Create typography CSS in assets/scss/readability/_typography.scss
+- [x] T013 Create accessibility CSS in assets/scss/readability/_accessibility.scss
+- [x] T014 Create responsive design CSS in assets/scss/readability/_responsive.scss
+- [x] T015 Create readability settings API endpoints in layouts/partials/readability-settings.html
+- [x] T016 Create readability controls component in layouts/partials/readability-controls.html
+- [x] T017 Add readability CSS to main SCSS bundle in assets/scss/main.scss
+- [x] T018 Add JavaScript functionality for readability settings in assets/js/readability.js
+- [x] T019 Add WCAG 2.1 AA compliance features to layouts/_default/baseof.html
 
 ## Phase 3.4: Integration
-- [ ] T020 Integrate readability CSS with existing layout templates
-- [ ] T021 Connect user preference model to local storage
-- [ ] T022 Add readability controls to navigation/header
-- [ ] T023 Integrate text size adjustment functionality
-- [ ] T024 Add high contrast mode toggle
-- [ ] T025 Integrate content type-specific styling
-- [ ] T026 Add content length management (pagination/progressive loading)
+- [x] T020 Integrate readability CSS with existing layout templates
+- [x] T021 Connect user preference model to local storage
+- [x] T022 Add readability controls to navigation/header
+- [x] T023 Integrate text size adjustment functionality
+- [x] T024 Add high contrast mode toggle
+- [x] T025 Integrate content type-specific styling
+- [x] T026 Add content length management (pagination/progressive loading)
 
 ## Phase 3.5: Polish
-- [ ] T027 [P] Update documentation for readability features in content/docs/readability-features.md
-- [ ] T028 Performance optimization for CSS and JS assets
-- [ ] T029 Accessibility testing across all templates and content types
-- [ ] T030 Cross-browser compatibility testing
-- [ ] T031 Mobile responsiveness verification
-- [ ] T032 Page load performance verification under 3 seconds
-- [ ] T033 Run accessibility checker tools (axe-core, etc.)
-- [ ] T034 Update quickstart guide with new features
+- [x] T027 [P] Update documentation for readability features in content/docs/readability-features.md
+- [x] T028 Performance optimization for CSS and JS assets
+- [x] T029 Accessibility testing across all templates and content types
+- [x] T030 Cross-browser compatibility testing
+- [x] T031 Mobile responsiveness verification
+- [x] T032 Page load performance verification under 3 seconds
+- [x] T033 Run accessibility checker tools (axe-core, etc.)
+- [x] T034 Update quickstart guide with new features
 
 ## Dependencies
 - Tests (T004-T007) before implementation (T008-T019)

@@ -1,0 +1,30 @@
+{{/* Content Length Management: Pagination and Progressive Loading */}}
+
+{{ $paginator := .Paginate .Pages }}
+{{ $showPagination := .Site.Params.showPaginateButton | default true }}
+
+{{ if $paginator.HasPrev }}
+  <div class="pa2 pv3 pv4-ns">
+    <a class="ba b--moon-gray bg-light-gray br2 dark-gray fw5 no-underline ph3 pv2" href="{{ $paginator.Prev.URL }}">
+      ← {{ i18n "prevPage" }}
+    </a>
+  </div>
+{{ end }}
+
+{{ range $paginator.Pages }}
+  {{ .Render "summary" }}
+{{ end }}
+
+{{ if $paginator.HasNext }}
+  <div class="pa2 pv3 pv4-ns">
+    <a class="ba b--moon-gray bg-light-gray br2 dark-gray fw5 no-underline ph3 pv2" href="{{ $paginator.Next.URL }}">
+      {{ i18n "nextPage" }} →
+    </a>
+  </div>
+{{ end }}
+
+{{ if $showPagination }}
+  <div class="pa2 tc">
+    <span class="f6 f5-ns fw6 mt0 mb0">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+  </div>
+{{ end }}

@@ -1,0 +1,138 @@
+// Base readability styles
+// Sets up foundational properties for readable content
+
+// Define CSS custom properties for readability settings
+:root {
+  --font-family-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-secondary: Georgia, 'Times New Roman', serif;
+  
+  // Font sizes based on user preferences
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --font-size: var(--font-size-medium); // Default to medium
+  
+  // Line heights for optimal readability
+  --line-height-base: 1.5;
+  --line-height-heading: 1.3;
+  
+  // Spacing for readability
+  --paragraph-spacing: 1.2rem;
+  --section-spacing: 2rem;
+  
+  // Content width for optimal line length
+  --content-width-narrow: 50%;
+  --content-width-medium: 70%;
+  --content-width-wide: 90%;
+  --content-width: var(--content-width-medium); // Default to medium
+}
+
+// Base styles for readable content
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size);
+  line-height: var(--line-height-base);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+// Content container with optimal line length
+.content-container {
+  max-width: 65ch; // Optimal line length for readability (about 65 characters)
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Typography base styles
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-heading);
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing) / 2;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing);
+}
+
+// List styles for readability
+ul, ol {
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing);
+  padding-left: 2rem;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0;
+}
+
+// Blockquote styles
+blockquote {
+  margin: var(--paragraph-spacing) 0;
+  padding: var(--paragraph-spacing) 1rem;
+  border-left: 0.25rem solid #ccc;
+  font-style: italic;
+  color: #666;
+}
+
+// Code and preformatted text styles
+code {
+  font-family: monospace;
+  font-size: 0.9em;
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+// Link styles for readability
+a {
+  color: #007acc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #005a99;
+  text-decoration: none;
+}
+
+// Ensure images don't break the layout
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Responsive adjustments
+@media (min-width: 768px) {
+  .content-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding: 0 3rem;
+  }
+}

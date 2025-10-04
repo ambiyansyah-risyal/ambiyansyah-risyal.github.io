@@ -1,0 +1,210 @@
+// Content type-specific styling for readability
+// Different styling approaches for various content types
+
+// Article-specific styling
+.article-content {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size);
+  line-height: var(--line-height-base);
+  max-width: 70ch; // Optimal for long-form reading
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// Blog post-specific styling
+.blog-post-content {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-base);
+  max-width: 65ch;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3 {
+  font-family: var(--font-family-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+// Documentation-specific styling
+.documentation-content {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-base);
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.documentation-content h1,
+.documentation-content h2,
+.documentation-content h3 {
+  font-family: var(--font-family-primary);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.documentation-content code {
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+}
+
+.documentation-content pre {
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 1em;
+  overflow: auto;
+  line-height: 1.45;
+}
+
+// Code snippet specific styling
+.code-content {
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 1rem;
+  overflow: auto;
+}
+
+// Quote or citation specific styling
+.quote-content {
+  font-family: var(--font-family-secondary);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #555;
+}
+
+.quote-content cite {
+  display: block;
+  text-align: right;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+// List specific styling
+.list-content {
+  font-size: var(--font-size);
+  line-height: var(--line-height-base);
+  padding-left: 2rem;
+}
+
+.list-content li {
+  margin-bottom: 0.5rem;
+}
+
+// Table-specific styling for readability
+.table-content {
+  font-size: var(--font-size);
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.table-content th,
+.table-content td {
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.table-content th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.table-content tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+// Image caption styling
+.caption-content {
+  font-size: 0.9em;
+  text-align: center;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+// Interactive content styling (like forms)
+.interactive-content {
+  font-size: var(--font-size-medium);
+}
+
+.interactive-content label,
+.interactive-content input,
+.interactive-content textarea,
+.interactive-content button {
+  display: block;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.interactive-content button {
+  width: auto;
+  padding: 0.5rem 1rem;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.interactive-content button:hover {
+  background-color: #005a99;
+}
+
+// Mobile-specific adjustments for content types
+@media (max-width: 768px) {
+  .article-content,
+  .blog-post-content,
+  .documentation-content {
+    padding: 0.5rem;
+    font-size: calc(var(--font-size) * 1.1); // Slightly larger on mobile for readability
+  }
+  
+  .quote-content {
+    padding-left: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .table-content {
+    font-size: 0.8rem;
+  }
+  
+  .table-content th,
+  .table-content td {
+    padding: 0.3rem;
+  }
+}
+
+// Print-specific styling for content types
+@media print {
+  .article-content,
+  .blog-post-content,
+  .documentation-content {
+    max-width: 100%;
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  
+  .code-content {
+    background: white;
+    border: 1px solid black;
+  }
+}

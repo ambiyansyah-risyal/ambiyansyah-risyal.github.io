@@ -56,11 +56,40 @@
   </head>
 
   {{- $environment := hugo.Environment | compare.Default "production" -}}
-  <body class="ma0 {{ $.Param "body_classes"  | compare.Default "avenir bg-near-white"}} {{ $environment }}">
-    {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
-    <main class="pb7" role="main">
+  <body class="ma0 {{ $.Param "body_classes"  | compare.Default "avenir bg-near-white" }} {{ $environment }}" id="top">
+    {{ block "header" . }}{{ partials.Include "site-header.html" . }}{{ end }}
+    <main class="pb7" role="main" id="main">
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partials.IncludeCached "site-footer.html" . }}{{ end }}
+    
+    <!-- Skip link for accessibility -->
+    <div class="skip-link">
+      <a href="#main" aria-label="Skip to main content">Skip to main content</a>
+    </div>
+    
+    <!-- WCAG 2.1 AA compliance scripts -->
+    <script>
+      // Check for high contrast mode preference
+      if (window.matchMedia('(prefers-contrast: high)').matches) {
+        document.documentElement.classList.add('high-contrast');
+      }
+      
+      // Check for reduced motion preference
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reduce-motion');
+      }
+      
+      // Add focus indicators for keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('keyboard-nav');
+        }
+      });
+      
+      document.addEventListener('mousedown', function() {
+        document.body.classList.remove('keyboard-nav');
+      });
+    </script>
   </body>
 </html>

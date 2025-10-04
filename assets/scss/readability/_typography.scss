@@ -1,0 +1,141 @@
+// Typography styles for readability
+// Focuses on font properties, sizing, spacing, and line length optimization
+
+// Font size adjustments based on user preference
+.font-size-small {
+  font-size: var(--font-size-small) !important;
+}
+
+.font-size-medium {
+  font-size: var(--font-size-medium) !important;
+}
+
+.font-size-large {
+  font-size: var(--font-size-large) !important;
+}
+
+// Line height adjustments for readability
+.line-height-compact {
+  line-height: 1.2 !important;
+}
+
+.line-height-normal {
+  line-height: var(--line-height-base) !important;
+}
+
+.line-height-spacious {
+  line-height: 1.8 !important;
+}
+
+// Reading width adjustments
+.reading-width-narrow {
+  max-width: var(--content-width-narrow) !important;
+}
+
+.reading-width-medium {
+  max-width: var(--content-width-medium) !important;
+}
+
+.reading-width-wide {
+  max-width: var(--content-width-wide) !important;
+}
+
+// Optimal typography for different content types
+.text-content {
+  max-width: 65ch; // Optimal line length for readability
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size);
+  line-height: var(--line-height-base);
+}
+
+.heading-content {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-heading);
+  font-weight: 600;
+}
+
+// Typography scale based on design system
+.typography-scale {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1rem; }
+  p { font-size: 1rem; }
+  small, .text-small { font-size: 0.875rem; }
+  .text-large { font-size: 1.125rem; }
+}
+
+// Typography spacing
+.typography-spacing {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5em;
+  }
+  
+  p, ul, ol, pre, blockquote {
+    margin-bottom: 1em;
+  }
+  
+  .tight { margin-bottom: 0.5em; }
+  .loose { margin-bottom: 1.5em; }
+}
+
+// Responsive typography
+@media (min-width: 480px) {
+  :root {
+    --font-size: var(--font-size-medium);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size: var(--font-size-medium);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size: var(--font-size-large);
+  }
+}
+
+// Typography for different content types
+.article-text {
+  font-family: var(--font-family-secondary);
+  font-size: 1.125rem;
+  line-height: var(--line-height-base);
+  max-width: 70ch;
+}
+
+.code-text {
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.quote-text {
+  font-family: var(--font-family-secondary);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+// Print-friendly typography
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  
+  p {
+    page-break-inside: avoid;
+  }
+}

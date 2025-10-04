@@ -10,3 +10,17 @@ pagerSize = 5
 # Enable RSS
 [outputs]
 home = ["HTML", "RSS"]
+
+# Readability configuration
+[params]
+  # Readability settings
+  readability = true
+  font_size_default = "medium"
+  contrast_mode = false
+  reading_width = "medium"
+  line_spacing = "normal"
+  
+  # Accessibility settings
+  high_contrast_enabled = false
+  text_scaling_enabled = true
+  responsive_typography = true

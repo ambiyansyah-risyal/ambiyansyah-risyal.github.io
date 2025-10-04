@@ -1,0 +1,161 @@
+{{/* Readability Controls Component */}}
+{{/* This component provides UI controls for users to adjust readability settings */}}
+
+<div class="readability-controls-component">
+  <div class="readability-controls-header">
+    <h3>Adjust Readability Settings</h3>
+  </div>
+  
+  <div class="readability-controls-form">
+    <div class="control-group">
+      <label for="readability-font-size">Font Size:</label>
+      <select id="readability-font-size" class="readability-control">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+    
+    <div class="control-group">
+      <label for="readability-contrast">High Contrast:</label>
+      <input type="checkbox" id="readability-contrast" class="readability-control">
+    </div>
+    
+    <div class="control-group">
+      <label for="readability-width">Content Width:</label>
+      <select id="readability-width" class="readability-control">
+        <option value="narrow">Narrow</option>
+        <option value="medium" selected>Medium</option>
+        <option value="wide">Wide</option>
+      </select>
+    </div>
+    
+    <div class="control-group">
+      <label for="readability-spacing">Line Spacing:</label>
+      <select id="readability-spacing" class="readability-control">
+        <option value="compact">Compact</option>
+        <option value="normal" selected>Normal</option>
+        <option value="spacious">Spacious</option>
+      </select>
+    </div>
+    
+    <button id="apply-readability-settings" class="btn btn-primary readability-apply-btn">
+      Apply Settings
+    </button>
+    
+    <button id="reset-readability-settings" class="btn btn-secondary readability-reset-btn">
+      Reset
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize readability controls
+    initializeReadabilityControls();
+  });
+  
+  function initializeReadabilityControls() {
+    // Load saved settings from localStorage
+    const savedSettings = JSON.parse(localStorage.getItem('readabilitySettings')) || {
+      fontSize: 'medium',
+      highContrast: false,
+      readingWidth: 'medium',
+      lineSpacing: 'normal'
+    };
+    
+    // Apply saved settings to UI
+    document.getElementById('readability-font-size').value = savedSettings.fontSize;
+    document.getElementById('readability-contrast').checked = savedSettings.highContrast;
+    document.getElementById('readability-width').value = savedSettings.readingWidth;
+    document.getElementById('readability-spacing').value = savedSettings.lineSpacing;
+    
+    // Apply settings to the page
+    applyReadabilitySettings(savedSettings);
+    
+    // Add event listeners
+    document.querySelectorAll('.readability-control').forEach(control => {
+      control.addEventListener('change', function() {
+        updateReadabilitySettings();
+      });
+    });
+    
+    document.getElementById('apply-readability-settings').addEventListener('click', function() {
+      updateReadabilitySettings();
+    });
+    
+    document.getElementById('reset-readability-settings').addEventListener('click', function() {
+      resetReadabilitySettings();
+    });
+  }
+  
+  function updateReadabilitySettings() {
+    const settings = {
+      fontSize: document.getElementById('readability-font-size').value,
+      highContrast: document.getElementById('readability-contrast').checked,
+      readingWidth: document.getElementById('readability-width').value,
+      lineSpacing: document.getElementById('readability-spacing').value
+    };
+    
+    // Save to localStorage
+    localStorage.setItem('readabilitySettings', JSON.stringify(settings));
+    
+    // Apply to page
+    applyReadabilitySettings(settings);
+  }
+  
+  function resetReadabilitySettings() {
+    // Reset to default settings
+    const defaultSettings = {
+      fontSize: 'medium',
+      highContrast: false,
+      readingWidth: 'medium',
+      lineSpacing: 'normal'
+    };
+    
+    // Update UI to defaults
+    document.getElementById('readability-font-size').value = defaultSettings.fontSize;
+    document.getElementById('readability-contrast').checked = defaultSettings.highContrast;
+    document.getElementById('readability-width').value = defaultSettings.readingWidth;
+    document.getElementById('readability-spacing').value = defaultSettings.lineSpacing;
+    
+    // Save to localStorage
+    localStorage.setItem('readabilitySettings', JSON.stringify(defaultSettings));
+    
+    // Apply to page
+    applyReadabilitySettings(defaultSettings);
+  }
+  
+  function applyReadabilitySettings(settings) {
+    // Apply font size
+    const fontSizeMap = {
+      'small': 'var(--font-size-small)',
+      'medium': 'var(--font-size-medium)',
+      'large': 'var(--font-size-large)'
+    };
+    document.documentElement.style.setProperty('--font-size', fontSizeMap[settings.fontSize]);
+    
+    // Apply high contrast
+    if (settings.highContrast) {
+      document.documentElement.classList.add('high-contrast');
+    } else {
+      document.documentElement.classList.remove('high-contrast');
+    }
+    
+    // Apply reading width
+    const widthMap = {
+      'narrow': 'var(--content-width-narrow)',
+      'medium': 'var(--content-width-medium)',
+      'wide': 'var(--content-width-wide)'
+    };
+    document.documentElement.style.setProperty('--content-width', widthMap[settings.readingWidth]);
+    
+    // Apply line spacing
+    const spacingMap = {
+      'compact': '1.2',
+      'normal': 'var(--line-height-base)',
+      'spacious': '1.8'
+    };
+    document.documentElement.style.setProperty('--line-height', spacingMap[settings.lineSpacing]);
+  }
+</script>

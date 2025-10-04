@@ -1,0 +1,216 @@
+// Accessibility styles
+// Implements WCAG 2.1 AA compliance features
+
+// High contrast mode styles
+.high-contrast {
+  // Increase color contrast ratios
+  color: #000 !important;
+  background-color: #fff !important;
+  
+  a {
+    color: #0000ee !important;
+    background-color: transparent !important;
+    text-decoration: underline !important;
+  }
+  
+  a:visited {
+    color: #551a8b !important;
+  }
+  
+  a:hover,
+  a:focus {
+    color: #000 !important;
+    background-color: #ffff00 !important;
+    text-decoration: underline !important;
+  }
+  
+  // Ensure sufficient contrast for all text
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+  }
+  
+  p, div, span, li, td, th {
+    color: #000 !important;
+  }
+  
+  // Enhanced focus indicators
+  a:focus,
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus,
+  *[tabindex]:focus {
+    outline: 3px solid #000 !important;
+    outline-offset: 2px !important;
+  }
+  
+  // Increase border thickness for better visibility
+  img, hr {
+    border: 2px solid #000 !important;
+  }
+  
+  // Remove background images that might interfere with text
+  * {
+    background-image: none !important;
+  }
+  
+  // Ensure text is not justified (to prevent uneven spacing)
+  div, p, td, li {
+    text-align: left !important;
+  }
+}
+
+// Focus management styles
+.focusable {
+  outline: none;
+  position: relative;
+}
+
+.focusable:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.focusable:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+// Skip link for screen readers
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+// Screen reader only content
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Visible only to screen readers when focused
+.sr-only-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  *:not(.skip-link) {
+    scroll-behavior: auto !important;
+  }
+}
+
+// High contrast media query support
+@media (prefers-contrast: high) {
+  :root {
+    --high-contrast-enabled: true;
+  }
+}
+
+// Dark mode support for accessibility
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    color: #e0e0e0;
+    background-color: #121212;
+  }
+  
+  .dark-mode a {
+    color: #64b5f6;
+  }
+  
+  .dark-mode a:focus,
+  .dark-mode button:focus,
+  .dark-mode input:focus {
+    outline-color: #64b5f6;
+  }
+}
+
+// Ensure minimum touch target size (WCAG 2.1 AA - 2.5.8)
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+// Larger touch targets for better accessibility
+.touch-target-large {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+// Focus styles for different components
+.btn-accessible:focus,
+.btn-accessible:focus-visible {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
+// ARIA attributes styling
+[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+[aria-current="page"] {
+  font-weight: bold;
+}
+
+// Semantic heading structure enforcement
+.content-section {
+  h2, h3, h4, h5, h6 {
+    // Ensure proper heading hierarchy
+    &:before {
+      content: "";
+      display: block;
+      height: 1rem;
+      margin-top: -1rem;
+      visibility: hidden;
+    }
+  }
+}
