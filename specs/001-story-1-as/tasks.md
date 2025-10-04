@@ -42,49 +42,49 @@
 - Paths shown below assume Hugo site structure - adjust based on plan.md structure
 
 ## Phase 3.1: Setup
-- [ ] T001 Install Hugo v0.120.0 or latest stable
-- [ ] T002 Initialize Hugo site structure with proper directory layout
-- [ ] T003 [P] Initialize Git repository for the Hugo site
-- [ ] T004 [P] Configure .gitignore for Hugo project
+- [X] T001 Install Hugo v0.120.0 or latest stable
+- [X] T002 Initialize Hugo site structure with proper directory layout
+- [X] T003 [P] Initialize Git repository for the Hugo site
+- [X] T004 [P] Configure .gitignore for Hugo project
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
-- [ ] T005 [P] Contract test for site configuration in tests/contract/test_site_config.py
-- [ ] T006 [P] Contract test for blog post structure in tests/contract/test_blog_post.py
-- [ ] T007 [P] Contract test for portfolio item structure in tests/contract/test_portfolio.py
-- [ ] T008 [P] Integration test for site build process in tests/integration/test_build.py
-- [ ] T009 [P] Integration test for mobile responsiveness in tests/integration/test_responsiveness.py
-- [ ] T010 [P] Integration test for accessibility compliance in tests/integration/test_accessibility.py
+- [X] T005 [P] Contract test for site configuration in tests/contract/test_site_config.py
+- [X] T006 [P] Contract test for blog post structure in tests/contract/test_blog_post.py
+- [X] T007 [P] Contract test for portfolio item structure in tests/contract/test_portfolio.py
+- [X] T008 [P] Integration test for site build process in tests/integration/test_build.py
+- [X] T009 [P] Integration test for mobile responsiveness in tests/integration/test_responsiveness.py
+- [X] T010 [P] Integration test for accessibility compliance in tests/integration/test_accessibility.py
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T011 [P] Create site configuration in config/_default/config.toml
-- [ ] T012 [P] Create site parameters in config/_default/params.toml
-- [ ] T013 [P] Create navigation menu in config/_default/menu.toml
-- [ ] T014 [P] Create blog post archetype in archetypes/posts.md
-- [ ] T015 [P] Create portfolio item archetype in archetypes/portfolio.md
-- [ ] T016 Install and configure Ananke theme as submodule
-- [ ] T017 [P] Create content directory structure (content/posts/, content/portfolio/)
-- [ ] T018 [P] Create example blog post in content/posts/my-first-post.md
-- [ ] T019 [P] Create example portfolio item in content/portfolio/my-project.md
-- [ ] T020 [P] Create basic layout templates in layouts/
-- [ ] T021 [P] Create static assets directories (static/css/, static/js/, static/images/)
+- [X] T011 [P] Create site configuration in config/_default/config.toml
+- [X] T012 [P] Create site parameters in config/_default/params.toml
+- [X] T013 [P] Create navigation menu in config/_default/menu.toml
+- [X] T014 [P] Create blog post archetype in archetypes/posts.md
+- [X] T015 [P] Create portfolio item archetype in archetypes/portfolio.md
+- [X] T016 Install and configure Ananke theme as submodule
+- [X] T017 [P] Create content directory structure (content/posts/, content/portfolio/)
+- [X] T018 [P] Create example blog post in content/posts/my-first-post.md
+- [X] T019 [P] Create example portfolio item in content/portfolio/my-project.md
+- [X] T020 [P] Create basic layout templates in layouts/
+- [X] T021 [P] Create static assets directories (static/css/, static/js/, static/images/)
 
 ## Phase 3.4: Integration
-- [ ] T022 Configure GitHub Pages deployment workflow in .github/workflows/deploy.yml
-- [ ] T023 Add accessibility features to HTML templates
-- [ ] T024 Optimize images for web in static/images/
-- [ ] T025 Implement responsive design in static/css/
+- [X] T022 Configure GitHub Pages deployment workflow in .github/workflows/deploy.yml
+- [X] T023 Add accessibility features to HTML templates
+- [X] T024 Optimize images for web in static/images/
+- [X] T025 Implement responsive design in static/css/
 
 ## Phase 3.5: Polish
-- [ ] T026 [P] Create README.md with project documentation
-- [ ] T027 [P] Create .github/CODEOWNERS file
-- [ ] T028 [P] Create development documentation in docs/development.md
-- [ ] T029 [P] Create content creation guidelines in docs/content-guidelines.md
-- [ ] T030 [P] Create .github/ISSUE_TEMPLATE/feature_request.md
-- [ ] T031 Run accessibility validation using aXe or Lighthouse
-- [ ] T032 Verify mobile responsiveness on different screen sizes
-- [ ] T033 Run Hugo build with minification to verify performance targets
-- [ ] T034 Verify all links are working correctly
+- [X] T026 [P] Create README.md with project documentation
+- [X] T027 [P] Create .github/CODEOWNERS file
+- [X] T028 [P] Create development documentation in docs/development.md
+- [X] T029 [P] Create content creation guidelines in docs/content-guidelines.md
+- [X] T030 [P] Create .github/ISSUE_TEMPLATE/feature_request.md
+- [X] T031 Run accessibility validation using aXe or Lighthouse
+- [X] T032 Verify mobile responsiveness on different screen sizes
+- [X] T033 Run Hugo build with minification to verify performance targets
+- [X] T034 Verify all links are working correctly
 
 ## Dependencies
 - T001 blocks T002 (Hugo needed to initialize site)

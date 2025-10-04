@@ -1,0 +1,12 @@
+baseURL = 'https://ambiyansyah-risyal.github.io/'
+languageCode = 'en-us'
+title = 'Risyal Ambiyansyah - Personal Website'
+author = 'Risyal Ambiyansyah'
+copyright = 'Risyal Ambiyansyah'
+theme = 'ananke'
+[pagination]
+pagerSize = 5
+
+# Enable RSS
+[outputs]
+home = ["HTML", "RSS"]

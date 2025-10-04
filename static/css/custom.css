@@ -1,0 +1,88 @@
+/* Custom CSS for responsive design and accessibility enhancements */
+
+/* Enhance mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 0 15px;
+  }
+  
+  /* Adjust font sizes for better readability on small screens */
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Ensure buttons and links are touch-friendly (minimum 44px) */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-block;
+    padding: 8px 12px;
+  }
+}
+
+/* Accessibility enhancements */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  width: 100px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-to-content:focus {
+  top: 6px;
+}
+
+/* Enhance focus indicators */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient color contrast */
+/* The theme should already handle this, but we're reinforcing it */
+.contrast-enhanced {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Adjust layout for very small screens */
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .wrapper {
+    padding: 0 10px;
+  }
+}
+
+/* Improve readability */
+p, li {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+/* Ensure content is not cut off on various screen sizes */
+.content {
+  min-height: calc(100vh - 200px); /* Account for header and footer */
+}

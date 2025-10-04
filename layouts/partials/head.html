@@ -1,0 +1,23 @@
+{{/* Custom head partial with accessibility enhancements */}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ if .Description }}
+  <meta name="description" content="{{ .Description }}">
+{{ else }}
+  <meta name="description" content="{{ .Site.Params.description }}">
+{{ end }}
+<link rel="canonical" href="{{ .Permalink }}">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+{{/* Include theme's head partial */}}
+{{ partial "head-raw" . }}
+
+{{/* Include custom CSS */}}
+{{ $customCSS := resources.Get "css/custom.css" }}
+{{ if $customCSS }}
+  {{ $customCSS := $customCSS | resources.Minify }}
+  <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
+{{ end }}
+
+{{/* Accessibility enhancements */}}
+<link rel="preload" href="/css/custom.css" as="style">
