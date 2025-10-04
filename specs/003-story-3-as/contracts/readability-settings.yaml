@@ -1,0 +1,57 @@
+# API Contract: Readability Settings
+
+This contract defines the interface for managing user readability preferences in the browser.
+
+## Endpoints
+
+### GET /api/readability-settings
+Retrieves the current readability settings for the user.
+
+**Response:**
+```
+{
+  "fontSize": "medium",        # Values: "small", "medium", "large"
+  "highContrast": false,       # Values: true, false
+  "readingWidth": "medium",    # Values: "narrow", "medium", "wide"
+  "lineSpacing": "normal"      # Values: "compact", "normal", "spacious"
+}
+```
+
+**Success Response (200 OK):**
+- Content-Type: application/json
+- Body: Readability settings object as shown above
+
+### PUT /api/readability-settings
+Updates the user's readability settings.
+
+**Request:**
+```
+{
+  "fontSize": "large",
+  "highContrast": true,
+  "readingWidth": "narrow",
+  "lineSpacing": "spacious"
+}
+```
+
+**Response:**
+- 200 OK: Settings updated successfully
+- 400 Bad Request: Invalid settings provided
+
+## Error Responses
+
+### 400 Bad Request
+```
+{
+  "error": "Invalid readability setting",
+  "details": "fontSize must be one of: small, medium, large"
+}
+```
+
+### 500 Internal Server Error
+```
+{
+  "error": "Failed to update settings",
+  "details": "Settings could not be saved"
+}
+```
